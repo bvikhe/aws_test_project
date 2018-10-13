@@ -1,0 +1,6 @@
+---
+- name: installing apache spackage
+  yum: name={{item}} state=latest
+  with_items:
+      - httpd
+      - httpd-tools

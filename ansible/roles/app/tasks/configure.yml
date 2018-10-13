@@ -1,0 +1,7 @@
+---
+- name: configuring apache service
+  copy: src=files/httpd.conf dest=/etc/httpd/conf/httpd.conf
+- name: cofigure apache web page
+  copy: src=files/index.html dest=/var/www/html/
+  notify:
+    - apache restart
