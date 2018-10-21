@@ -1,34 +1,34 @@
 pipeline{
-environment {
-  vi_username = "aws_username"
-  vi_password = "aws_password"
-}
+    environment {
+      vi_username = "aws_username"
+      vi_password = "aws_password"
+    }
 
 
 
-agent any
-parameters {
-  choice choices: ['default', 'spinvm', 'baseImage', 'configuration'], description: '', name: 'default'
-}
+    agent any
+    parameters {
+      choice choices: ['default', 'spinvm', 'baseImage', 'configuration'], description: '', name: 'default'
+    }
 
 
-stages{
+    stages{
 
-    stage('spinvm') {
-      when {
+      stage('spinvm') {
+        when {
             expression {params.stage == "default" || params.stage == "spinvm" }
         }
-      steps {
+        steps {
       
-      dir ('terraform/aws') {
-      winEnv (["TF_VAR_aws_username=$vi_username", "TF_VAR_vi_password=$vi_password"]) {
-      sh 'terraform apply --var-file=environment/compute/amazonaws/com/variables.tfvars terraform/aws/main.tf --state /aws/app/terraform.tfstate'
-      sh 'terraform output -state=/aws/app/terraform.tfstate ansible/hosts'
-    }
-    }
+          dir ('terraform/aws') {
+          winEnv (["TF_VAR_aws_username=$vi_username", "TF_VAR_vi_password=$vi_password"]) {
+          sh 'terraform apply --var-file=environment/compute/amazonaws/com/variables.tfvars terraform/aws/main.tf --state /aws/app/terraform.tfstate'
+          sh 'terraform output -state=/aws/app/terraform.tfstate ansible/hosts'
+          }
+         }
 
-}
+       }
 
-}
-}
+    }
+  }
 }
