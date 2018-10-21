@@ -17,18 +17,16 @@ pipeline{
       stage('spinvm') {
         when {
             expression { params.Stage == "default" || params.Stage == "spinvm" }
-        }
-        steps {
+           }
+          steps {
       
-          dir ('terraform/aws') {
-          winEnv (["TF_VAR_aws_username=$vi_username", "TF_VAR_vi_password=$vi_password"]) {
-          sh 'terraform apply --var-file=environment/compute/amazonaws/com/variables.tfvars terraform/aws/main.tf --state /aws/app/terraform.tfstate'
-          sh 'terraform output -state=/aws/app/terraform.tfstate ansible/hosts'
-          }
+            dir ('terraform/aws') {
+            winEnv (["TF_VAR_aws_username=$vi_username", "TF_VAR_vi_password=$vi_password"]) {
+             sh 'terraform apply --var-file=environment/compute/amazonaws/com/variables.tfvars terraform/aws/main.tf --state /aws/app/terraform.tfstate'
+             sh 'terraform output -state=/aws/app/terraform.tfstate ansible/hosts'
+            }
+           }
          }
-
-       }
-
+      }
     }
-  }
 }
