@@ -16,7 +16,7 @@ pipeline{
 
       stage('spinvm') {
         when {
-            expression {params.stage == "default" || params.stage == "spinvm" }
+            expression { params.Stage == "default" || params.Stage == "spinvm" }
         }
         steps {
       
