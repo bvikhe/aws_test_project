@@ -12,7 +12,7 @@ environment {
 
 agent any
 parameters {
-  choice choices: ['spinvm', 'baseImage', 'configuration'], description: '', name: 'default'
+  choice choices: ['default', 'spinvm', 'baseImage', 'configuration'], description: '', name: 'default'
 }
 
 
