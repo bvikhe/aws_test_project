@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     environment {
       vi_username = "aws_username"
       vi_password = "aws_password"
@@ -8,7 +8,7 @@ pipeline{
 
     agent any
     parameters {
-      choice choices: ['default', 'spinvm', 'baseImage', 'configuration'], description: '', name: 'default'
+      choice choices: ['default', 'spinvm', 'baseImage', 'configuration'], description: '', name: 'Stage'
     }
 
 
