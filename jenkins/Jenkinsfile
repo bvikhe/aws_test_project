@@ -25,7 +25,7 @@ pipeline {
             withEnv (["TF_VAR_aws_username=$vi_username", "TF_VAR_aws_password=$vi_password"]) {
              sh 'terraform validate --var-file=environment/compute/amazonaws/com/variables.tfvars'
              sh 'terraform apply --var-file=environment/compute/amazonaws/com/variables.tfvars terraform/aws/main.tf --state=/aws/terraform.tfstate'
-             sh 'terraform output -state=/aws/app/terraform.tfstate host_ip | tr -d ',' > $pod_automation_home/ansible/hosts'
+             sh "terraform output -state=/aws/app/terraform.tfstate host_ip | tr -d ',' > $pod_automation_home/ansible/hosts"
             }
            }
          }
