@@ -1,7 +1,3 @@
-mansi.gupta@comparex.in
-archana.kurhade@comparex.in
-
-
 pipeline{
 environment {
   vi_username = "aws_username"
