@@ -11,6 +11,8 @@ module "app" {
   aws_password = "${var.aws_password}"
   aws_vpc_cidr = "${var.aws_vpc_cidr}"
   aws_ami = "${var.aws_ami}"
+  aws_access_key = "${var.aws_access_key}"
+  aws_secret_key = "${var.aws_secret_key}"
 }
 
 output "instance_ips" {
